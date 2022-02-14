@@ -1,0 +1,36 @@
+{# base.htmlを継承する #}
+{% extends "base.html" %}
+
+{# タイトルのブロックを記述 #}
+{% block title %}
+きのこ派・たけのこ派　予測アプリ
+{% endblock %}
+
+{# コンテンツのブロックを記述 #}
+{% block contents %}
+<h2>予測結果</h2>
+<div style="background:yellow; padding:1rem; max-width: 500px;">{{result|safe}}</div>
+<h2>入力項目</h2>
+<form action="/predict" method="POST">
+  <label for="name">名前：</label>
+  <input type="text" name="name" id="name"><br>
+  <label for="height">身長(cm)：</label>
+  <input type="number" name="height" id="height" min="100" max="300"><br>
+  <label for="weight">体重(kg)：</label>
+  <input type="number" name="weight" id="weight" min="10" max="300"><br>
+  <label for="age">年代：</label>
+  <select name="age" id="age">
+    <option value="10">10代</option>
+    <option value="20">20代</option>
+    <option value="30">30代</option>
+    <option value="40">40代</option>
+    <option value="50">50代</option>
+    <option value="60">60代</option>
+    <option value="70">70代</option>
+    <option value="80">80代</option>
+    <option value="90">90代</option>
+    <option value="100">100代</option>
+  </select><br>
+  <button type="submit" style="font-size:large; margin: 20px">予測</button>
+</form>
+{% endblock %}
